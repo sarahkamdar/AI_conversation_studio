@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 
 const healthRoutes = require('./routes/healthRoutes');
+const promptRoutes = require('./routes/promptRoutes');
 const { errorHandler } = require('./middlewares/errorMiddleware');
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 app.use('/api', healthRoutes);
+app.use('/api/prompts', promptRoutes);
 
 app.use(errorHandler);
 
